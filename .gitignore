@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Byte-compiled / optimized / DLL files
+runs/
+*.log
+
+# Streamlit config
+.streamlit/
+
+# Large model weights (keep yolov8n.pt if under 15MB, ultralytics auto-downloads anyway)
+*.pt
+!yolov8n.pt

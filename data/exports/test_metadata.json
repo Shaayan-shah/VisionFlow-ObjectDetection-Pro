@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-09-15T09:34:32.309165",
+  "total_detections": 0,
+  "metrics": {
+    "total_latency_ms": 4173.46,
+    "preprocess_ms": 6.53,
+    "inference_ms": 164.28,
+    "postprocess_ms": 2.52,
+    "fps": 0.2
+  },
+  "metadata": {
+    "test_run": true
+  },
+  "detections": []
+}

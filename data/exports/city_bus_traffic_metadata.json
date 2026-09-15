@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-09-15T11:27:32.785407",
+  "total_detections": 4,
+  "metrics": {
+    "total_latency_ms": 8352.35,
+    "preprocess_ms": 12.52,
+    "inference_ms": 370.96,
+    "postprocess_ms": 15.52,
+    "fps": 0.1
+  },
+  "metadata": {
+    "model": "yolov8n.pt",
+    "source": "data/samples/city_bus_traffic.jpg"
+  },
+  "detections": [
+    {
+      "detection_id": 1,
+      "class_id": 5,
+      "class_name": "bus",
+      "confidence": 0.873,
+      "bbox": [
+        22,
+        231,
+        805,
+        756
+      ],
+      "center": [
+        413,
+        493
+      ],
+      "width": 783,
+      "height": 525,
+      "area_px": 411075,
+      "in_roi": false
+    },
+    {
+      "detection_id": 2,
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.866,
+      "bbox": [
+        48,
+        398,
+        245,
+        902
+      ],
+      "center": [
+        146,
+        650
+      ],
+      "width": 197,
+      "height": 504,
+      "area_px": 99288,
+      "in_roi": false
+    },
+    {
+      "detection_id": 3,
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.853,
+      "bbox": [
+        669,
+        392,
+        809,
+        877
+      ],
+      "center": [
+        739,
+        634
+      ],
+      "width": 140,
+      "height": 485,
+      "area_px": 67900,
+      "in_roi": false
+    },
+    {
+      "detection_id": 4,
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.825,
+      "bbox": [
+        221,
+        405,
+        344,
+        857
+      ],
+      "center": [
+        282,
+        631
+      ],
+      "width": 123,
+      "height": 452,
+      "area_px": 55596,
+      "in_roi": false
+    }
+  ]
+}
