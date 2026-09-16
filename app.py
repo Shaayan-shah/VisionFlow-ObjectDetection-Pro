@@ -404,12 +404,23 @@ with tab_upload:
     st.markdown("#### 📤 Upload Your Real-World Images for Instant Object Detection")
     st.caption("Drag and drop your own photos (JPEG, PNG, WEBP). Supports street photos, personal photos, surveillance footage, and store images.")
     
-    uploaded_files = st.file_uploader(
-        "Choose one or more image files",
-        type=["jpg", "jpeg", "png", "webp"],
-        accept_multiple_files=True,
-        key="main_image_uploader"
-    )
+    col_up1, col_up2 = st.columns([3, 2])
+    with col_up1:
+        st.markdown("##### Option A: Browse Files or Drag & Drop")
+        uploaded_files = st.file_uploader(
+            "Choose one or more image files from your PC",
+            type=["jpg", "jpeg", "png", "webp"],
+            accept_multiple_files=True,
+            key="main_image_uploader"
+        )
+    with col_up2:
+        st.markdown("##### Option B: Enter Direct File Path on PC")
+        local_path_input = st.text_input(
+            "Paste full file path on your PC:",
+            placeholder="D:\\MyPhotos\\example.jpg",
+            key="local_pc_path_input"
+        )
+        load_local_btn = st.button("📂 Load & Detect from PC Path", key="btn_load_local")
 
     if uploaded_files:
         if len(uploaded_files) == 1:
@@ -417,7 +428,7 @@ with tab_upload:
             bgr = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
             process_and_display_image(bgr, source_name=uploaded_files[0].name)
         else:
-            st.success(f"Uploaded {len(uploaded_files)} images! Select an image below to analyze:")
+            st.success(f"Uploaded {len(uploaded_files)} images from your PC! Select an image below to analyze:")
             img_choice = st.selectbox("Select image to view", [f.name for f in uploaded_files])
             for f in uploaded_files:
                 if f.name == img_choice:
@@ -425,8 +436,19 @@ with tab_upload:
                     bgr = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
                     process_and_display_image(bgr, source_name=f.name)
                     break
+    elif load_local_btn and local_path_input.strip():
+        clean_path = local_path_input.strip().strip('"').strip("'")
+        if os.path.exists(clean_path):
+            bgr = cv2.imread(clean_path)
+            if bgr is not None:
+                st.success(f"Loaded local PC file: `{clean_path}`")
+                process_and_display_image(bgr, source_name=os.path.basename(clean_path))
+            else:
+                st.error("Could not decode image at the specified path. Please ensure it is a valid image file.")
+        else:
+            st.error(f"File not found on your PC: `{clean_path}`. Please verify the path.")
     else:
-        st.info("👆 Drop any photo above to run real-time YOLOv8 object detection on your own real data!")
+        st.info("👆 Click **'Browse files'** to pick any photo from your computer, or paste a local file path above!")
 
 # ---------------------------------------------------------
 # TAB 2: ANALYZE FROM IMAGE URL
