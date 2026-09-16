@@ -7,29 +7,35 @@
 [![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B.svg?logo=streamlit)](https://streamlit.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-**VisionFlow-ObjectDetection-Pro** is an end-to-end computer vision and spatial visual analytics platform built on top of **YOLOv8** and **OpenCV**. Designed for production applications in **Smart Cities, Traffic Monitoring, Retail Analytics, and Security Surveillance**, VisionFlow provides real-time multi-class object detection, dynamic Region of Interest (ROI) zone monitoring, live inference telemetry, and structured data export.
+**VisionFlow-ObjectDetection-Pro** is an end-to-end computer vision and spatial visual analytics platform built on top of **YOLOv8** and **OpenCV**. Designed for real-world production applications in **Smart Cities, Traffic Monitoring, Retail Analytics, and Security Surveillance**, VisionFlow provides real-time multi-class object detection, dynamic Region of Interest (ROI) zone monitoring, live inference telemetry, and structured data export.
 
 ---
 
 ## 🌟 Key Features
 
-* **⚡ Real-Time YOLOv8 Inference**: Supports 80 COCO object classes with sub-30ms latency on CPU and 120+ FPS throughput on GPU.
-* **📸 Multi-Modal Input Ingestion**:
-  * **Image Upload**: JPEG, PNG, WEBP high-resolution processing.
-  * **Video Streams**: Frame-by-frame inference on MP4, AVI, MOV with progress tracking.
-  * **Live Webcam**: Direct camera feed with instant snapshot analytics.
-  * **Preset Benchmark Gallery**: Built-in traffic, office, and street scenes for instant 1-click demos.
+* **⚡ Real-Time YOLOv8 Inference**: Supports all 80 COCO object classes with high-precision bounding boxes, confidence scoring, and low latency.
+* **📸 Multi-Modal Real-Data Ingestion (Front & Center)**:
+  * **📤 Upload Your Own Photos**: Drag-and-drop your own real-world images (JPEG, PNG, WEBP) with single or batch multi-image preview.
+  * **🌐 Direct Image URL Ingestion**: Paste any direct public image URL from the web (Unsplash, Google, Wikimedia) for instant analysis.
+  * **🎥 Video File Ingestion**: Upload MP4, AVI, MOV clips with customizable frame skipping and live frame-by-frame progress.
+  * **🔴 Live Webcam**: Real-time snapshot analysis directly through your browser or device camera.
+  * **📂 5 Verified Photographic Benchmark Datasets Included**:
+    * 🚌 *Urban City Bus & Pedestrians* (`city_bus_traffic.jpg`)
+    * 🐕 *Dog, Bicycle & Pickup Truck* (`dog_bicycle_car.jpg`)
+    * 🚶 *Street Pedestrians & Animal Scene* (`pedestrians_street.jpg`)
+    * 🐎 *Wild Horses in Nature Field* (`horses_field.jpg`)
+    * 🚗 *Highway Cars & Commuters* (`traffic_cars_highway.jpg`)
 * **📐 Region of Interest (ROI) Zone Monitoring**:
-  * Define custom spatial zones (e.g. entrance gates, restricted areas, checkout lanes).
+  * Define custom spatial zones (e.g. entrance gates, crosswalks, restricted areas).
   * Point-in-polygon collision testing with dynamic occupancy counters and overcapacity alert beacons.
 * **📊 Tactical HUD & Live Analytics Dashboard**:
-  * Real-time metrics: Active Targets, Unique Classes, Inference FPS, and Latency Profiling (Pre-process, Neural Inference, NMS).
-  * Class breakdown bar charts and interactive detection dataframes.
+  * Real-time metrics: Active Targets, Unique Classes, Inference FPS, and Latency Profiling (Pre-process, Neural Inference, Post-process).
+  * Target class frequency distribution bar charts and interactive telemetry data tables.
 * **💾 Enterprise Telemetry Export**:
   * **1-Click High-Res PNG**: Export annotated frames with tactical corner brackets and confidence badges.
-  * **CSV Telemetry**: Tabular logs containing timestamps, bounding box coordinates `[x1, y1, x2, y2]`, and zone status.
+  * **CSV Telemetry**: Tabular logs containing timestamps, bounding box coordinates `[x1, y1, x2, y2]`, pixel area, and zone status.
   * **JSON Metadata**: Full hierarchical payload for downstream MES/SCADA integration.
-* **💻 Dual Interfaces**: Interactive **Streamlit Web GUI** and a lightweight headless **CLI tool**.
+* **💻 Dual Interfaces**: Modern **Streamlit Web GUI** and a lightweight headless **CLI tool**.
 
 ---
 
@@ -38,7 +44,7 @@
 ```
                            ┌──────────────────────────────────────────────┐
                            │          INPUT MEDIA INGESTION               │
-                           │  (Webcam | Video File | Image | Presets)     │
+                           │(Upload Own Image | URL | Video | WebCam | DB)│
                            └──────────────────────┬───────────────────────┘
                                                   │
                                                   ▼
@@ -103,14 +109,14 @@ streamlit run app.py
 Your browser will automatically open to `http://localhost:8501`.
 
 ### 3. Using the Headless CLI Tool
-For batch processing images or videos without the web interface:
+For batch processing images without the web interface:
 
 ```bash
-# Detect objects on sample traffic image
-python cli.py --source data/samples/highway_traffic.jpg --conf 0.35 --save-img --save-csv
+# Detect objects on real-world photographic benchmark image
+python cli.py --source data/samples/city_bus_traffic.jpg --conf 0.35 --save-img --save-csv
 
-# Filter specific target classes only (e.g. cars and persons)
-python cli.py --source data/samples/pedestrian_street.jpg --classes person bicycle
+# Run detection on your own photo
+python cli.py --source "path/to/your_photo.jpg" --save-img --save-json
 ```
 
 ---
@@ -121,47 +127,39 @@ python cli.py --source data/samples/pedestrian_street.jpg --classes person bicyc
 VisionFlow-ObjectDetection-Pro/
 │
 ├── 📂 data/
-│   ├── 📂 samples/             # Built-in benchmark test images
-│   │   ├── highway_traffic.jpg
-│   │   ├── office_workspace.jpg
-│   │   └── pedestrian_street.jpg
-│   └── 📂 exports/             # Output directory for telemetry logs & images
+│   ├── 📂 samples/             # 5 Verified Real-World Benchmark Photographic Datasets
+│   │   ├── city_bus_traffic.jpg
+│   │   ├── dog_bicycle_car.jpg
+│   │   ├── horses_field.jpg
+│   │   ├── pedestrians_street.jpg
+│   │   └── traffic_cars_highway.jpg
+│   └── 📂 exports/             # Output directory for telemetry logs & annotated images
 │
 ├── 📂 src/
 │   ├── 📂 core/
 │   │   ├── __init__.py
-│   │   └── detector.py         # YOLOv8 engine wrapper with ROI spatial logic
+│   │   └── detector.py         # YOLOv8 engine wrapper with spatial ROI analytics
 │   └── 📂 utils/
 │       ├── __init__.py
-│       ├── visualizer.py       # High-tech HUD, tactical brackets & bounding boxes
-│       ├── exporter.py         # CSV, JSON, and PNG telemetry writers
-│       └── sample_generator.py # Synthetic & real test data generator
+│       ├── visualizer.py       # Tactical HUD, corner brackets, and color palette
+│       └── exporter.py         # CSV, JSON, and PNG telemetry generators
 │
-├── 📄 app.py                   # Streamlit production web application
+├── 📄 app.py                   # Streamlit production web application with multi-tab upload
 ├── 📄 cli.py                   # Headless batch processing CLI
-├── 📄 test_suite.py            # Automated end-to-end verification suite
+├── 📄 test_suite.py            # Automated verification test suite on real datasets
 ├── 📄 requirements.txt         # Pinned Python package dependencies
 ├── 📄 run.bat                  # One-click Windows application launcher
+├── 📄 yolov8n.pt               # Pre-cached lightweight YOLOv8 weights (ready out of the box)
 ├── 📄 .gitignore               # Git configuration
 ├── 📄 LICENSE                  # MIT License
-└── 📄 README.md                # Technical documentation
+└── 📄 README.md                # Comprehensive technical documentation
 ```
-
----
-
-## 📊 Performance Benchmarks
-
-| Model | Parameters | Image Size | CPU Latency (Intel i7) | GPU Latency (RTX 3060) | COCO mAP 50-95 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **YOLOv8n (Nano)** | 3.2M | 640×640 | ~24 ms (42 FPS) | ~4.1 ms (240 FPS) | 37.3 |
-| **YOLOv8s (Small)**| 11.2M | 640×640 | ~48 ms (21 FPS) | ~6.5 ms (153 FPS) | 44.9 |
-| **YOLOv8m (Medium)**| 25.9M | 640×640 | ~110 ms (9 FPS) | ~11.2 ms (89 FPS) | 50.2 |
 
 ---
 
 ## 🧪 Verification & Automated Testing
 
-VisionFlow includes a self-contained test suite that automatically checks model weights, runs benchmark inference, tests zone spatial intersection algorithms, and verifies telemetry export:
+VisionFlow includes a self-contained test suite that automatically checks model weights, runs benchmark inference on all real-world photographic datasets, tests zone spatial intersection algorithms, and verifies telemetry export:
 
 ```bash
 python test_suite.py

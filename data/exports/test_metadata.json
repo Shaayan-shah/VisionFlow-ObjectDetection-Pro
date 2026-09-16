@@ -1,15 +1,97 @@
 {
-  "timestamp": "2026-09-15T09:34:32.309165",
-  "total_detections": 0,
+  "timestamp": "2026-09-16T12:22:39.103341",
+  "total_detections": 4,
   "metrics": {
-    "total_latency_ms": 4173.46,
-    "preprocess_ms": 6.53,
-    "inference_ms": 164.28,
-    "postprocess_ms": 2.52,
+    "total_latency_ms": 4165.08,
+    "preprocess_ms": 7.04,
+    "inference_ms": 168.49,
+    "postprocess_ms": 3.59,
     "fps": 0.2
   },
   "metadata": {
-    "test_run": true
+    "test_run": true,
+    "real_data": true
   },
-  "detections": []
+  "detections": [
+    {
+      "detection_id": 1,
+      "class_id": 5,
+      "class_name": "bus",
+      "confidence": 0.873,
+      "bbox": [
+        22,
+        231,
+        805,
+        756
+      ],
+      "center": [
+        413,
+        493
+      ],
+      "width": 783,
+      "height": 525,
+      "area_px": 411075,
+      "in_roi": true
+    },
+    {
+      "detection_id": 2,
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.866,
+      "bbox": [
+        48,
+        398,
+        245,
+        902
+      ],
+      "center": [
+        146,
+        650
+      ],
+      "width": 197,
+      "height": 504,
+      "area_px": 99288,
+      "in_roi": true
+    },
+    {
+      "detection_id": 3,
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.853,
+      "bbox": [
+        669,
+        392,
+        809,
+        877
+      ],
+      "center": [
+        739,
+        634
+      ],
+      "width": 140,
+      "height": 485,
+      "area_px": 67900,
+      "in_roi": false
+    },
+    {
+      "detection_id": 4,
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.825,
+      "bbox": [
+        221,
+        405,
+        344,
+        857
+      ],
+      "center": [
+        282,
+        631
+      ],
+      "width": 123,
+      "height": 452,
+      "area_px": 55596,
+      "in_roi": true
+    }
+  ]
 }
