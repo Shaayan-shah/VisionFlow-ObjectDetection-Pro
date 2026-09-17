@@ -1,0 +1,131 @@
+{
+  "timestamp": "2026-09-17 18:43:50",
+  "model": "yolov8n.pt",
+  "device": "cpu",
+  "confidence_threshold": 0.35,
+  "iterations_per_sample": 1,
+  "environment": {
+    "os": "Windows-11-10.0.26100-SP0",
+    "python_version": "3.12.8",
+    "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel",
+    "cpu_cores_physical": 4,
+    "cpu_cores_logical": 8,
+    "total_ram_gb": 15.78,
+    "available_ram_gb": 6.35
+  },
+  "overall_summary": {
+    "total_images": 5,
+    "total_detections": 17,
+    "mean_latency_ms": 167.56,
+    "throughput_fps": 6.0
+  },
+  "per_sample_results": [
+    {
+      "filename": "city_bus_traffic.jpg",
+      "resolution": "810x1080",
+      "iterations": 1,
+      "avg_latency_ms": 221.18,
+      "min_latency_ms": 221.18,
+      "max_latency_ms": 221.18,
+      "fps": 4.5,
+      "detection_count": 4,
+      "classes_detected": {
+        "bus": 1,
+        "person": 3
+      },
+      "metrics": {
+        "total_latency_ms": 179.96,
+        "preprocess_ms": 6.48,
+        "inference_ms": 168.05,
+        "postprocess_ms": 2.8,
+        "fps": 5.6
+      }
+    },
+    {
+      "filename": "dog_bicycle_car.jpg",
+      "resolution": "768x576",
+      "iterations": 1,
+      "avg_latency_ms": 166.38,
+      "min_latency_ms": 166.38,
+      "max_latency_ms": 166.38,
+      "fps": 6.0,
+      "detection_count": 4,
+      "classes_detected": {
+        "dog": 1,
+        "bicycle": 1,
+        "car": 1,
+        "truck": 1
+      },
+      "metrics": {
+        "total_latency_ms": 164.19,
+        "preprocess_ms": 5.54,
+        "inference_ms": 154.44,
+        "postprocess_ms": 3.14,
+        "fps": 6.1
+      }
+    },
+    {
+      "filename": "horses_field.jpg",
+      "resolution": "773x512",
+      "iterations": 1,
+      "avg_latency_ms": 163.04,
+      "min_latency_ms": 163.04,
+      "max_latency_ms": 163.04,
+      "fps": 6.1,
+      "detection_count": 4,
+      "classes_detected": {
+        "horse": 4
+      },
+      "metrics": {
+        "total_latency_ms": 161.4,
+        "preprocess_ms": 5.6,
+        "inference_ms": 152.5,
+        "postprocess_ms": 2.27,
+        "fps": 6.2
+      }
+    },
+    {
+      "filename": "pedestrians_street.jpg",
+      "resolution": "640x424",
+      "iterations": 1,
+      "avg_latency_ms": 133.79,
+      "min_latency_ms": 133.79,
+      "max_latency_ms": 133.79,
+      "fps": 7.5,
+      "detection_count": 3,
+      "classes_detected": {
+        "person": 1,
+        "horse": 1,
+        "dog": 1
+      },
+      "metrics": {
+        "total_latency_ms": 132.28,
+        "preprocess_ms": 2.63,
+        "inference_ms": 126.09,
+        "postprocess_ms": 2.52,
+        "fps": 7.6
+      }
+    },
+    {
+      "filename": "traffic_cars_highway.jpg",
+      "resolution": "750x1334",
+      "iterations": 1,
+      "avg_latency_ms": 153.4,
+      "min_latency_ms": 153.4,
+      "max_latency_ms": 153.4,
+      "fps": 6.5,
+      "detection_count": 2,
+      "classes_detected": {
+        "person": 1,
+        "cell phone": 1
+      },
+      "metrics": {
+        "total_latency_ms": 152.03,
+        "preprocess_ms": 4.14,
+        "inference_ms": 145.06,
+        "postprocess_ms": 1.91,
+        "fps": 6.6
+      }
+    }
+  ]
+}

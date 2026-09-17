@@ -146,6 +146,7 @@ VisionFlow-ObjectDetection-Pro/
 │
 ├── 📄 app.py                   # Streamlit production web application with multi-tab upload
 ├── 📄 cli.py                   # Headless batch processing CLI
+├── 📄 benchmark.py             # Performance & latency benchmarking profiler
 ├── 📄 test_suite.py            # Automated verification test suite on real datasets
 ├── 📄 requirements.txt         # Pinned Python package dependencies
 ├── 📄 run.bat                  # One-click Windows application launcher
@@ -157,12 +158,20 @@ VisionFlow-ObjectDetection-Pro/
 
 ---
 
-## 🧪 Verification & Automated Testing
+## 🧪 Verification & Performance Benchmarking
 
-VisionFlow includes a self-contained test suite that automatically checks model weights, runs benchmark inference on all real-world photographic datasets, tests zone spatial intersection algorithms, and verifies telemetry export:
+VisionFlow includes both an automated test suite and an inference profiler:
 
+### Automated Test Suite
+Validates model weights, runs inference across real-world photographic datasets, tests zone spatial intersection algorithms, and verifies telemetry export:
 ```bash
 python test_suite.py
+```
+
+### Performance & Latency Benchmark
+Profiles model throughput, latency breakdowns, and hardware utilization with JSON report export:
+```bash
+python benchmark.py --iterations 3
 ```
 
 ---
